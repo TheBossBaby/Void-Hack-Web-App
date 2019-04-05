@@ -1,10 +1,15 @@
 import flask
+from flask import render_template
 import numpy as np
 import tensorflow as tf
 from keras.models import load_model
 
 # initialize our Flask application and the Keras model
 app = flask.Flask(__name__)
+@app.route("/")
+def index():
+	return render_template("index.html")
+
 def init():
     global model,graph
     # load the pre-trained Keras model
@@ -15,18 +20,18 @@ def init():
 
 def getParameters():
     parameters = []
-    parameters.append(flask.request.args.get('male'))
-    parameters.append(flask.request.args.get('book1'))
-    parameters.append(flask.request.args.get('book2'))
-    parameters.append(flask.request.args.get('book3'))
-    parameters.append(flask.request.args.get('book4'))
-    parameters.append(flask.request.args.get('book5'))
-    parameters.append(flask.request.args.get('isMarried'))
-    parameters.append(flask.request.args.get('isNoble'))
-    parameters.append(flask.request.args.get('numDeadRelations'))
-    parameters.append(flask.request.args.get('boolDeadRelations'))
-    parameters.append(flask.request.args.get('isPopular'))
-    parameters.append(flask.request.args.get('popularity'))
+    parameters.append(flask.request.form.get('male'))
+    parameters.append(flask.request.form.get('book1'))
+    parameters.append(flask.request.form.get('book2'))
+    parameters.append(flask.request.form.get('book3'))
+    parameters.append(flask.request.form.get('book4'))
+    parameters.append(flask.request.form.get('book5'))
+    parameters.append(flask.request.form.get('isMarried'))
+    parameters.append(flask.request.form.get('isNoble'))
+    parameters.append(flask.request.form.get('numDeadRelations'))
+    parameters.append(flask.request.form.get('boolDeadRelations'))
+    parameters.append(flask.request.form.get('isPopular'))
+    parameters.append(flask.request.form.get('popularity'))
     return parameters
 
 # Cross origin support
@@ -39,9 +44,9 @@ def sendResponse(responseObj):
     return response
 
 # API for prediction
-@app.route("/predict", methods=["GET"])
+@app.route("/predict", methods=["POST"])
 def predict():
-    nameOfTheCharacter = flask.request.args.get('name')
+    nameOfTheCharacter = flask.request.form.get('name')
     parameters = getParameters()
     inputFeature = np.asarray(parameters).reshape(1, 12)
     with graph.as_default():
@@ -58,4 +63,4 @@ if __name__ == "__main__":
     print(("* Loading Keras model and Flask starting server..."
 "please wait until server has fully started"))
     init()
-    app.run(host='127.0.0.3',threaded=True)
+    app.run(host='127.0.0.5',threaded=True)
