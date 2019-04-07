@@ -15,5 +15,6 @@ We are taking two images as our input.A **content image** and a **style-image**.
   </ul>
 
 ## Image Segmentation
-Image segmentation is done in order to get ROI(i.e region of interest) in potrait images where we want to apply style.
+In computer visiob,image segmentaion is the process of partitioning digital image into multiplesegments.
+Image segmentation is done in order to get ROI(i.e region of interest) in potrait images where we want to apply style accordingly.
 ### Mask R-CNN
