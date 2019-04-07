@@ -18,3 +18,5 @@ We are taking two images as our input.A **content image** and a **style-image**.
 In computer visiob,image segmentaion is the process of partitioning digital image into multiplesegments.
 Image segmentation is done in order to get ROI(i.e region of interest) in potrait images where we want to apply style accordingly.
 ### Mask R-CNN
+
+![Image Of Mask R-CNN Architechture](https://cdn-images-1.medium.com/max/800/1*QaPtdVXIeIdFhbW0Ac7tNA.png)
