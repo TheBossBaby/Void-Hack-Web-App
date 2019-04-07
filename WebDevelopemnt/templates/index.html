@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Void Hacks()</title>
+	<link rel="shortcut icon" href="../static/logo.png">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'style.css')}}">
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+</head>	
+<body>
+		<header>
+		<h1>Potato_Minds</h1>
+		</header>
+
+		<section>
+  	<div>
+  		<div id="black">
+  			<img class="image" src="../static/logo.png" alt="logo">
+  		</div>
+		<div id="golden">
+			<p>Style Transfer</p>
+			<ol>
+				<li>Choose Content image</li>
+				<li>Choose Theme/style</li>
+				<li>Click Upload</li>
+			</ol>
+		</div>
+	</section>
+
+	<footer>
+	<div class="form-data">
+
+	<form action="/predict" method="post" enctype="multipart/form-data" id="form">	
+		<input type="file" name="content-image" class="button">
+		<input type="file" name="style-image" class="button">
+		<input type="submit" value="upload" class="button" id="upload">
+	</form>
+	</div>
+	</footer>
+
+
+</body>
+</html>	
